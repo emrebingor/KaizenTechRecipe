@@ -11,5 +11,11 @@ enum ImagePathEnum {
   TIME,
   BACK_ARROW,
   TEXT_FIELD_SEARCH,
-  ARROW_RIGHT
+  ARROW_RIGHT,
+  HEART,
+  X,
+  CAL,
+  CARB,
+  FAT,
+  PROTEIN
 }

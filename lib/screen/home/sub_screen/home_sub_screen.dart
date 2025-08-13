@@ -89,11 +89,16 @@ final class _RecipeFieldWidget extends StatelessWidget {
             separatorBuilder: (BuildContext context, int index) => SizedBox(width: 16),
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
-              return RecipeListBoxWidget(
-                image: 'https://case-backend.vercel.app/images/karniyarik.jpg',
-                title: 'Karnıyarık',
-                calorie: '120 Kcal',
-                time: '20 Min',
+              return InkWell(
+                onTap: () {
+                  context.push(RoutePaths.itemDetail);
+                },
+                child: RecipeListBoxWidget(
+                  image: 'https://case-backend.vercel.app/images/karniyarik.jpg',
+                  title: 'Karnıyarık',
+                  calorie: '120 Kcal',
+                  time: '20 Min',
+                ),
               );
             },
           ),

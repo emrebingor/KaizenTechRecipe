@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kaizen_tech_recipe/core/navigation/app_router.dart';
 import 'package:kaizen_tech_recipe/data/provider/tab_provider.dart';
-import 'package:kaizen_tech_recipe/screen/tab/tab_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,12 +16,12 @@ final class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => TabProvider()),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: appRouter,
         theme: ThemeData(
           fontFamily: 'SofiaPro',
         ),
         debugShowCheckedModeBanner: false,
-        home: const TabScreen(),
       ),
     );
   }
