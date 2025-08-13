@@ -38,6 +38,15 @@ extension ImagePathEnumExtension on ImagePathEnum {
       case ImagePathEnum.TIME:
         _imagePath = _baseImagePath + _svgPath + 'ic_time'.toSvg;
         break;
+      case ImagePathEnum.BACK_ARROW:
+        _imagePath = _baseImagePath + _svgPath + 'ic_back_arrow'.toSvg;
+        break;
+      case ImagePathEnum.TEXT_FIELD_SEARCH:
+        _imagePath = _baseImagePath + _svgPath + 'ic_text_field_search'.toSvg;
+        break;
+      case ImagePathEnum.ARROW_RIGHT:
+        _imagePath = _baseImagePath + _svgPath + 'ic_arrow_right'.toSvg;
+        break;
     }
     return _imagePath;
   }

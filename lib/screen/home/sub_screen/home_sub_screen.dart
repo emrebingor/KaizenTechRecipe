@@ -59,24 +59,8 @@ final class _CategoryFieldWidget extends StatelessWidget {
             separatorBuilder: (BuildContext context, int index) => SizedBox(width: 12),
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
-              return Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 9,
-                  horizontal: 24,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  color: ColorExtension.light_grey,
-                ),
-                child: Text(
-                  'Ana Yemek',
-                  style: TextStyle(
-                    color: ColorExtension.neutral_dark,
-                    fontFamily: FontFamilyEnum.sofiaPro.value,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                  ),
-                ),
+              return CategoryBoxWidget(
+                title: 'Ana Yemek',
               );
             },
           ),

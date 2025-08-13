@@ -82,7 +82,9 @@ final class _NavItem extends StatelessWidget {
         icon.getImagePath,
       ),
       onPressed: () {
-        context.read<TabProvider>().setTab(index);
+        if(index == 0 || index == 1) {
+          context.read<TabProvider>().setTab(index);
+        }
       },
     );
   }

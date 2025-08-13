@@ -23,7 +23,7 @@ final class CalorieIconRowWidget extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            color: ColorExtension.neutral_grey,
+            color: ColorExtension.neutral_grey_2,
             fontFamily: FontFamilyEnum.sofiaPro.value,
             fontWeight: FontWeight.w400,
             fontSize: 14,

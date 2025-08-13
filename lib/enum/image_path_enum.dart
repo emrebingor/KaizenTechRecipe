@@ -8,5 +8,8 @@ enum ImagePathEnum {
   CHEF,
   SUN,
   CALORIES,
-  TIME
+  TIME,
+  BACK_ARROW,
+  TEXT_FIELD_SEARCH,
+  ARROW_RIGHT
 }
