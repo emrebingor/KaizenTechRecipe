@@ -1,0 +1,9 @@
+enum ImagePathEnum {
+  HOME,
+  SEARCH,
+  ALERT,
+  PROFILE,
+  SELECTED_HOME,
+  SELECTED_SEARCH,
+  CHEF
+}
