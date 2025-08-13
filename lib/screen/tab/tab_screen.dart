@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kaizen_tech_recipe/data/provider/tab_provider.dart';
 import 'package:kaizen_tech_recipe/enum/image_path_enum.dart';
 import 'package:kaizen_tech_recipe/screen/home/home_screen.dart';
+import 'package:kaizen_tech_recipe/screen/search/search_screen.dart';
 import 'package:kaizen_tech_recipe/utils/extension/color_extension.dart';
 import 'package:kaizen_tech_recipe/utils/extension/image_path_extension.dart';
 import 'package:provider/provider.dart';
@@ -19,9 +20,7 @@ final class _TabScreenState extends State<TabScreen> {
 
   final List<Widget> pages = const [
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    SearchScreen(),
   ];
 
   @override

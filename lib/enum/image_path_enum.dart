@@ -5,5 +5,8 @@ enum ImagePathEnum {
   PROFILE,
   SELECTED_HOME,
   SELECTED_SEARCH,
-  CHEF
+  CHEF,
+  SUN,
+  CALORIES,
+  TIME
 }

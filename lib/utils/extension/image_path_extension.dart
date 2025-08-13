@@ -29,6 +29,15 @@ extension ImagePathEnumExtension on ImagePathEnum {
       case ImagePathEnum.CHEF:
         _imagePath = _baseImagePath + _svgPath + 'ic_chef'.toSvg;
         break;
+      case ImagePathEnum.SUN:
+        _imagePath = _baseImagePath + _svgPath + 'ic_sun'.toSvg;
+        break;
+      case ImagePathEnum.CALORIES:
+        _imagePath = _baseImagePath + _svgPath + 'ic_calories'.toSvg;
+        break;
+      case ImagePathEnum.TIME:
+        _imagePath = _baseImagePath + _svgPath + 'ic_time'.toSvg;
+        break;
     }
     return _imagePath;
   }

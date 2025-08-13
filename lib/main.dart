@@ -17,6 +17,9 @@ final class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => TabProvider()),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          fontFamily: 'SofiaPro',
+        ),
         debugShowCheckedModeBanner: false,
         home: const TabScreen(),
       ),
