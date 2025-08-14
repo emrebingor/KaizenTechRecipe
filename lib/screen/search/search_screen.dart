@@ -15,6 +15,8 @@ import 'package:kaizen_tech_recipe/models/get_recipe_response_model.dart';
 import 'package:kaizen_tech_recipe/screen/search/mixin/search_screen_mixin.dart';
 import 'package:kaizen_tech_recipe/utils/extension/color_extension.dart';
 
+part './sub_screen/search_sub_screen.dart';
+
 final class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
 
@@ -50,9 +52,8 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: Column(
                     children: [
-                      TextFieldWidget(
+                      _TextFieldWidget(
                         controller: searchController,
-                        hintText: 'Arama',
                         onChanged: (value) {
                           searchFieldUpdate(value);
                         },
@@ -60,75 +61,22 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
 
                       SizedBox(height: 16),
 
-                      SizedBox(
-                        height: 41,
-                        child: ListView.separated(
-                          itemCount: context.watch<RecipeProvider>().categoryList.length,
-                          separatorBuilder: (BuildContext context, int index) => SizedBox(width: 12),
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (BuildContext context, int index) {
-                            final GetCategoryResponseModel category = context.watch<RecipeProvider>().categoryList[index];
-                            final bool isSelected = state.selectedCategory != null &&
-                                category.id == state.selectedCategory!.id;
-                            return InkWell(
-                              onTap: () => selectedCategoryUpdate(
-                                category,
-                                context.read<RecipeProvider>().recipes,
-                              ),
-                              child: CategoryBoxWidget(
-                                title: category.name ?? '',
-                                isSelected: isSelected,
-                              ),
-                            );
-                          },
+                      _CategoryFieldWidget(
+                        selectedCategory: state.selectedCategory,
+                        onTap: (GetCategoryResponseModel category) => selectedCategoryUpdate(
+                          category,
+                          context.read<RecipeProvider>().recipes,
                         ),
                       ),
 
                       SizedBox(height: 24),
 
-
-                      state.filteredRecipe?.isEmpty ?? false ? Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.restaurant_menu,
-                              size: 64,
-                              color: ColorExtension.brand_primary,
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              'Kategoriye ait ürün şu an güncel ürün yoktur.',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: FontFamilyEnum.sofiaPro.value,
-                                color: ColorExtension.brand_primary,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ) : ListView.separated(
-                        shrinkWrap: true,
-                        itemCount: state.filteredRecipe?.length ?? 0,
-                        separatorBuilder: (BuildContext context, int index) => SizedBox(height: 16),
-                        scrollDirection: Axis.vertical,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (BuildContext context, int index) {
-                          final GetRecipeResponseModel? recipe = state.filteredRecipe?[index];
-                          return InkWell(
-                            onTap: () {
-                              if(recipe != null) {
-                                itemDetailNavigation(recipe.id!);
-                              }
-                            },
-                            child: VerticalItemBoxWidget(
-                              image: recipe?.image ?? '',
-                              title: recipe?.name ?? '',
-                              calorie: '${recipe?.calories} Kcal',
-                              time: '${recipe?.cookTime} min',
-                            ),
-                          );
+                      state.filteredRecipe?.isEmpty ?? false
+                          ? _EmptyRecipeWidget()
+                          : _RecipeListWidget(
+                        filteredRecipe: state.filteredRecipe,
+                        onTap: (int id) {
+                          itemDetailNavigation(id);
                         },
                       ),
                     ],

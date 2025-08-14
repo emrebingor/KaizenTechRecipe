@@ -11,7 +11,6 @@ import 'package:kaizen_tech_recipe/screen/search/search_screen.dart';
 
 import '../../../data/bloc/search/search_screen_event.dart';
 
-
 mixin SearchScreenMixin on BaseViewState<SearchScreen> {
   final SearchBloc _searchBloc = SearchBloc();
   SearchBloc get searchBloc => _searchBloc;

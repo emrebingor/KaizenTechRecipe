@@ -15,7 +15,8 @@ final class SearchBloc extends BaseBloc<SearchScreenAction, SearchScreenState> {
     on<SearchRecipeEvent>(_searchRecipe);
   }
 
-  Future<void> _searchInitAction(SearchScreenInitAction event, Emitter<SearchScreenState> emit) async {
+  Future<void> _searchInitAction(SearchScreenInitAction event,
+      Emitter<SearchScreenState> emit) async {
     emit(state.copyWith(filteredRecipe: event.recipe));
   }
 
@@ -28,8 +29,8 @@ final class SearchBloc extends BaseBloc<SearchScreenAction, SearchScreenState> {
     }
 
     final filtered = event.recipe!
-        .where((recipe) => recipe.name?.toLowerCase().startsWith(query) ?? false)
-        .toList();
+        .where((recipe) => recipe.name?.toLowerCase()
+        .startsWith(query) ?? false).toList();
 
     emit(state.copyWith(filteredRecipe: filtered));
   }
@@ -38,19 +39,22 @@ final class SearchBloc extends BaseBloc<SearchScreenAction, SearchScreenState> {
     List<GetRecipeResponseModel> filteredRecipes = [];
 
     if (state.selectedCategory?.id == event.category.id) {
-      emit(
-        state.copyWith(
-          selectedCategory: null,
-          filteredRecipe: event.recipe,
+      emit(state.copyWith(
+        selectedCategory: null,
+        filteredRecipe: event.recipe,
         ),
       );
       return;
     }
 
     if (event.recipe != null) {
-      filteredRecipes = event.recipe.where((recipe) => recipe.categoryId == event.category.id).toList();
+      filteredRecipes = event.recipe.where((recipe) => recipe.categoryId == event.category.id)
+          .toList();
     }
 
-    emit(state.copyWith(selectedCategory: event.category, filteredRecipe: filteredRecipes));
+    emit(state.copyWith(
+      selectedCategory: event.category,
+      filteredRecipe: filteredRecipes,
+    ));
   }
 }
