@@ -55,12 +55,16 @@ class _HomeScreenState extends BaseViewState<HomeScreen> with HomeScreenMixin {
 
                     SizedBox(height: 24),
 
-                    _CategoryFieldWidget(state.categories ?? []),
+                    _CategoryFieldWidget(
+                      categories: state.categories ?? [],
+                      onTap: selectedCategoryUpdate,
+                      selectedCategory: state.selectedCategory,
+                    ),
 
                     SizedBox(height: 24),
 
                     _RecipeFieldWidget(
-                      recipes: state.recipes ?? [],
+                      recipes: state.filteredRecipe ?? [],
                         onTap: (id) => itemDetailNavigation(id),
                     ),
                   ],

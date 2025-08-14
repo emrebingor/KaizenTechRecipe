@@ -63,7 +63,7 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
                           itemBuilder: (BuildContext context, int index) {
                             final GetCategoryResponseModel category = context.watch<RecipeProvider>().categoryList[index];
                             return CategoryBoxWidget(
-                              title: category.name ?? '',
+                              title: category.name ?? '', isSelected: false,
                             );
                           },
                         ),

@@ -4,6 +4,7 @@ import 'package:kaizen_tech_recipe/core/base/state/base_view_state.dart';
 import 'package:kaizen_tech_recipe/core/navigation/route_paths.dart';
 import 'package:kaizen_tech_recipe/data/bloc/home/home_bloc.dart';
 import 'package:kaizen_tech_recipe/data/bloc/home/home_event.dart';
+import 'package:kaizen_tech_recipe/models/get_category_response_model.dart';
 import 'package:kaizen_tech_recipe/screen/home/home_screen.dart';
 
 mixin HomeScreenMixin on BaseViewState<HomeScreen> {
@@ -16,6 +17,10 @@ mixin HomeScreenMixin on BaseViewState<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _homeBloc.add(const HomeInitAction());
     });
+  }
+
+  void selectedCategoryUpdate(GetCategoryResponseModel category) {
+    _homeBloc.add(SelectedCategoryUpdate(category));
   }
 
   void itemDetailNavigation(int id) {

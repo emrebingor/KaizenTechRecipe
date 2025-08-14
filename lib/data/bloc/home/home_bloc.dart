@@ -18,6 +18,7 @@ final class HomeBloc extends BaseBloc<HomeAction, HomeState> {
         _categoryUseCase = categoryUseCase ?? CategoryUseCase(CategoryRepository()),
         super(HomeState()) {
     on<HomeInitAction>(_homeInitAction);
+    on<SelectedCategoryUpdate>(_updateSelectedCategory);
   }
 
   Future<void> _homeInitAction(HomeInitAction event, Emitter<HomeState> emit) async {
@@ -30,10 +31,31 @@ final class HomeBloc extends BaseBloc<HomeAction, HomeState> {
       emit(state.copyWith(
         isLoading: false,
         recipes: recipes,
+        filteredRecipe: recipes,
         categories: categories,
       ));
     } catch (e) {
       emit(state.copyWith(isLoading: false, errorMessage: e.toString()));
     }
+  }
+
+  Future<void> _updateSelectedCategory(SelectedCategoryUpdate event, Emitter<HomeState> emit) async {
+    List<GetRecipeResponseModel> filteredRecipes = [];
+
+    if (state.selectedCategory?.id == event.category.id) {
+      emit(
+        state.copyWith(
+          selectedCategory: null,
+          filteredRecipe: state.recipes ?? [],
+        ),
+      );
+      return;
+    }
+
+    if (state.recipes != null) {
+      filteredRecipes = state.recipes!.where((recipe) => recipe.categoryId == event.category.id).toList();
+    }
+
+    emit(state.copyWith(selectedCategory: event.category, filteredRecipe: filteredRecipes));
   }
 }

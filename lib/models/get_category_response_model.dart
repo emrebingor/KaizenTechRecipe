@@ -7,7 +7,7 @@ final class GetCategoryResponseModel {
 
   factory GetCategoryResponseModel.fromJson(Map<String, dynamic> json) =>
       GetCategoryResponseModel(
-        id: json['id'] is int ? json['id'] as int : null,
+        id: json['id'] is String ? json['id'] as String : null,
         name: json['name'] as String?,
         description: json['description'] as String?,
       );
@@ -20,7 +20,7 @@ final class GetCategoryResponseModel {
 
   String? name;
   String? description;
-  int? id;
+  String? id;
 
 
   Map<String, dynamic> toJson() => {

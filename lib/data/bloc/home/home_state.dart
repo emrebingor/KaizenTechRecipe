@@ -9,10 +9,14 @@ final class HomeState extends BaseBlocState {
     super.isLoading,
     this.recipes,
     this.categories,
+    this.selectedCategory,
+    this.filteredRecipe,
   });
 
   List<GetRecipeResponseModel>? recipes;
+  List<GetRecipeResponseModel>? filteredRecipe;
   List<GetCategoryResponseModel>? categories;
+  GetCategoryResponseModel? selectedCategory;
 
   @override
   List<Object?> get props {
@@ -20,6 +24,8 @@ final class HomeState extends BaseBlocState {
       ...super.props,
       recipes,
       categories,
+      selectedCategory,
+      filteredRecipe,
     ];
   }
 
@@ -29,14 +35,18 @@ final class HomeState extends BaseBlocState {
     String? errorMessage,
     bool? isLoading,
     List<GetRecipeResponseModel>? recipes,
+    List<GetRecipeResponseModel>? filteredRecipe,
     List<GetCategoryResponseModel>? categories,
+    GetCategoryResponseModel? selectedCategory,
   }) {
     return HomeState(
       hasError: hasError ?? false,
       errorMessage: errorMessage ?? '',
       isLoading: isLoading ?? this.isLoading,
       recipes: recipes ?? this.recipes,
+      filteredRecipe: filteredRecipe ?? this.filteredRecipe,
       categories: categories ?? this.categories,
+      selectedCategory: selectedCategory ?? this.selectedCategory,
     );
   }
 }

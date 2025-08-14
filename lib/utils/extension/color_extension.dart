@@ -9,6 +9,7 @@ extension ColorExtension on Color {
   static const Color neutral_grey_2 = Color(0xFF97A2B0);
   static const Color neutral_grey_4 = Color(0xFFE6EBF2);
   static const Color brand_primary = Color(0xFF042628);
+  static const Color brand_secondary = Color(0xFF70B9BE);
   static const Color darker_blue = Color(0x1A063336);
   static const Color grey_shadow = Color(0x2695A8C3);
 }

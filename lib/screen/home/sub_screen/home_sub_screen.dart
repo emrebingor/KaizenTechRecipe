@@ -41,8 +41,10 @@ final class _HeaderFieldWidget extends StatelessWidget {
 }
 
 final class _CategoryFieldWidget extends StatelessWidget {
-  const _CategoryFieldWidget(this.categories);
+  const _CategoryFieldWidget({required this.categories, required this.onTap, required this.selectedCategory});
   final List<GetCategoryResponseModel> categories;
+  final GetCategoryResponseModel? selectedCategory;
+  final void Function(GetCategoryResponseModel) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +64,15 @@ final class _CategoryFieldWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
               final GetCategoryResponseModel category = categories[index];
-              return CategoryBoxWidget(
-                title: category.name ?? '',
+              final bool isSelected = selectedCategory != null &&
+                      category.id == selectedCategory!.id;
+
+              return GestureDetector(
+                onTap: () => onTap(category),
+                child: CategoryBoxWidget(
+                  title: category.name ?? '',
+                  isSelected: isSelected,
+                ),
               );
             },
           ),
@@ -80,7 +89,31 @@ final class _RecipeFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(recipes.isEmpty) return SizedBox.shrink();
+    if (recipes.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.restaurant_menu,
+              size: 64,
+              color: ColorExtension.brand_primary,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Kategoriye ait ürün şu an güncel ürün yoktur.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: FontFamilyEnum.sofiaPro.value,
+                color: ColorExtension.brand_primary,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
