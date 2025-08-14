@@ -29,62 +29,66 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
   Widget build(BuildContext context) {
     return BaseView<SearchBloc, SearchScreenAction, SearchScreenState>(
       blocModel: searchBloc,
-      child: Scaffold(
-        backgroundColor: ColorExtension.white,
-        appBar: AppBar(
+      child: PopScope(
+        canPop: false,
+        child: Scaffold(
           backgroundColor: ColorExtension.white,
-          title: Text(
-            'Arama',
-            style: TextStyle(
-              color: ColorExtension.neutral_dark,
-              fontFamily: FontFamilyEnum.sofiaPro.value,
-              fontWeight: FontWeight.w700,
-              fontSize: 24,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: ColorExtension.white,
+            title: Text(
+              'Arama',
+              style: TextStyle(
+                color: ColorExtension.neutral_dark,
+                fontFamily: FontFamilyEnum.sofiaPro.value,
+                fontWeight: FontWeight.w700,
+                fontSize: 24,
+              ),
             ),
           ),
-        ),
-        body: BlocConsumer<SearchBloc, SearchScreenState>(
-          listener: (BuildContext context, SearchScreenState state) {},
-          builder: (BuildContext context, SearchScreenState state) {
-            return SafeArea(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Column(
-                    children: [
-                      _TextFieldWidget(
-                        controller: searchController,
-                        onChanged: (value) {
-                          searchFieldUpdate(value);
-                        },
-                      ),
-
-                      SizedBox(height: 16),
-
-                      _CategoryFieldWidget(
-                        selectedCategory: state.selectedCategory,
-                        onTap: (GetCategoryResponseModel category) => selectedCategoryUpdate(
-                          category,
-                          context.read<RecipeProvider>().recipes,
+          body: BlocConsumer<SearchBloc, SearchScreenState>(
+            listener: (BuildContext context, SearchScreenState state) {},
+            builder: (BuildContext context, SearchScreenState state) {
+              return SafeArea(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      children: [
+                        _TextFieldWidget(
+                          controller: searchController,
+                          onChanged: (value) {
+                            searchFieldUpdate(value);
+                          },
                         ),
-                      ),
 
-                      SizedBox(height: 24),
+                        SizedBox(height: 16),
 
-                      state.filteredRecipe?.isEmpty ?? false
-                          ? _EmptyRecipeWidget()
-                          : _RecipeListWidget(
-                        filteredRecipe: state.filteredRecipe,
-                        onTap: (int id) {
-                          itemDetailNavigation(id);
-                        },
-                      ),
-                    ],
+                        _CategoryFieldWidget(
+                          selectedCategory: state.selectedCategory,
+                          onTap: (GetCategoryResponseModel category) => selectedCategoryUpdate(
+                            category,
+                            context.read<RecipeProvider>().recipes,
+                          ),
+                        ),
+
+                        SizedBox(height: 24),
+
+                        state.filteredRecipe?.isEmpty ?? false
+                            ? _EmptyRecipeWidget()
+                            : _RecipeListWidget(
+                          filteredRecipe: state.filteredRecipe,
+                          onTap: (int id) {
+                            itemDetailNavigation(id);
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

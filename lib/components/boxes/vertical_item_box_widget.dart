@@ -70,7 +70,14 @@ final class VerticalItemBoxWidget extends StatelessWidget {
                 children: [
                   CalorieIconRowWidget(icon: ImagePathEnum.CALORIES, title: calorie),
                   SizedBox(width: 8),
-                  Text('.'),
+                  Text(
+                    '.',
+                    style: TextStyle(
+                      color: ColorExtension.neutral_grey_2,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
+                  ),
                   SizedBox(width: 8),
                   CalorieIconRowWidget(icon: ImagePathEnum.TIME, title: time)
                 ],

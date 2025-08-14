@@ -33,45 +33,48 @@ class _HomeScreenState extends BaseViewState<HomeScreen> with HomeScreenMixin {
   Widget build(BuildContext context) {
     return BaseView<HomeBloc, HomeAction, HomeState>(
       blocModel: homeBloc,
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: BlocConsumer<HomeBloc, HomeState>(
-          listener: (BuildContext context, HomeState state) {
-            if(state.recipes?.isNotEmpty ?? false) {
-              context.read<RecipeProvider>().setRecipeList(state.recipes!);
-            }
-            if(state.categories?.isNotEmpty ?? false) {
-              context.read<RecipeProvider>().setCategoryList(state.categories!);
-            }
-          },
-          builder: (BuildContext context, HomeState state) {
-            return SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _HeaderFieldWidget(),
+      child: PopScope(
+        canPop: false,
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: BlocConsumer<HomeBloc, HomeState>(
+            listener: (BuildContext context, HomeState state) {
+              if(state.recipes?.isNotEmpty ?? false) {
+                context.read<RecipeProvider>().setRecipeList(state.recipes!);
+              }
+              if(state.categories?.isNotEmpty ?? false) {
+                context.read<RecipeProvider>().setCategoryList(state.categories!);
+              }
+            },
+            builder: (BuildContext context, HomeState state) {
+              return SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _HeaderFieldWidget(),
 
-                    SizedBox(height: 24),
+                      SizedBox(height: 24),
 
-                    _CategoryFieldWidget(
-                      categories: state.categories ?? [],
-                      onTap: selectedCategoryUpdate,
-                      selectedCategory: state.selectedCategory,
-                    ),
+                      _CategoryFieldWidget(
+                        categories: state.categories ?? [],
+                        onTap: selectedCategoryUpdate,
+                        selectedCategory: state.selectedCategory,
+                      ),
 
-                    SizedBox(height: 24),
+                      SizedBox(height: 24),
 
-                    _RecipeFieldWidget(
-                      recipes: state.filteredRecipe ?? [],
-                        onTap: (id) => itemDetailNavigation(id),
-                    ),
-                  ],
+                      _RecipeFieldWidget(
+                        recipes: state.filteredRecipe ?? [],
+                          onTap: (id) => itemDetailNavigation(id),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ).withLoading(state.isLoading);
-          },
+              ).withLoading(state.isLoading);
+            },
+          ),
         ),
       ),
     );

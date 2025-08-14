@@ -27,19 +27,22 @@ final class _TabScreenState extends State<TabScreen> {
   Widget build(BuildContext context) {
     final tabProvider = context.watch<TabProvider>();
 
-    return Scaffold(
-      body: pages[tabProvider.selectedIndex],
-      floatingActionButton: FloatingActionButton(
-        shape: CircleBorder(),
-        backgroundColor: ColorExtension.brand_primary,
-        onPressed: () {},
-        child: SvgPicture.asset(
-          ImagePathEnum.CHEF.getImagePath,
-          color: Colors.white,
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        body: pages[tabProvider.selectedIndex],
+        floatingActionButton: FloatingActionButton(
+          shape: CircleBorder(),
+          backgroundColor: ColorExtension.brand_primary,
+          onPressed: () {},
+          child: SvgPicture.asset(
+            ImagePathEnum.CHEF.getImagePath,
+            color: Colors.white,
+          ),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: const BottomNavigationTabBarWidget(),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: const BottomNavigationTabBarWidget(),
     );
   }
 }
