@@ -1,17 +1,18 @@
 part of '../item_detail_screen.dart';
 
-final class _TabBarWidget extends StatefulWidget {
-  const _TabBarWidget();
+final class _TabBarWidget extends StatelessWidget {
+  const _TabBarWidget({
+    required this.selectedTab,
+    required this.onTabChanged,
+  });
 
-  @override
-  State<_TabBarWidget> createState() => __TabBarWidgetState();
-}
-
-final class __TabBarWidgetState extends State<_TabBarWidget> {
-  int selectedIndex = 0;
+  final TabType selectedTab;
+  final void Function(TabType) onTabChanged;
 
   @override
   Widget build(BuildContext context) {
+    final tabs = TabType.values;
+
     return Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
@@ -19,112 +20,168 @@ final class __TabBarWidgetState extends State<_TabBarWidget> {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
+        children: List.generate(tabs.length, (index) {
+          final tab = tabs[index];
+          return TabButton(
+            text: tab.getName,
+            index: index,
+            selectedIndex: selectedTab == tab ? index : -1,
+            onTap: (_) => onTabChanged(tab),
+          );
+        }),
+      ),
+    );
+  }
+}
+
+
+final class _IngredientInstructionFieldWidget extends StatelessWidget {
+  const _IngredientInstructionFieldWidget({required this.selectedTab, required this.recipe});
+  final TabType selectedTab;
+  final GetRecipeDetailResponseModel recipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TabButton(
-            text: "İçindekiler",
-            index: 0,
-            selectedIndex: selectedIndex,
-            onTap: (i) => setState(() => selectedIndex = i),
+          Text(
+            selectedTab == TabType.instructions ? 'Talimatlar' : 'İçindekiler',
+            style: TextStyle(
+              fontSize: 20,
+              color: ColorExtension.brand_primary,
+              fontWeight: FontWeight.w700,
+            ),
           ),
-          TabButton(
-            text: "Talimatlar",
-            index: 1,
-            selectedIndex: selectedIndex,
-            onTap: (i) => setState(() => selectedIndex = i),
+
+          Text(
+            selectedTab == TabType.instructions ? '${recipe.instructions.length} Adım' : '${recipe.ingredients.length} Malzeme',
+            style: TextStyle(
+              fontSize: 16,
+              color: ColorExtension.neutral_grey_1,
+              fontWeight: FontWeight.w400,
+            ),
           ),
+
+          SizedBox(height: 12),
+
+          ListView.separated(
+            shrinkWrap: true,
+            itemCount: selectedTab == TabType.instructions
+                ? recipe.instructions.length
+                : recipe.ingredients.length,
+            separatorBuilder: (BuildContext context, int index) => SizedBox(height: 16),
+            scrollDirection: Axis.vertical,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (BuildContext context, int index) {
+              if (selectedTab == TabType.instructions) {
+                final String instruction = recipe.instructions[index];
+                return Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: selectedTab == TabType.instructions ? 20 : 30,
+                    horizontal: 24,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: ColorExtension.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: ColorExtension.darker_blue,
+                        blurRadius: 16,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: _InstructionBoxWidget(instruction: instruction),
+                );
+              } else {
+                final Ingredient ingredient = recipe.ingredients[index];
+                return Container(
+                  padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: ColorExtension.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: ColorExtension.darker_blue,
+                        blurRadius: 16,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: _IngredientBoxWidget(ingredient: ingredient),
+                );
+              }
+            },
+          ),
+
+
         ],
       ),
     );
   }
 }
 
-final class _IngredientInstructionFieldWidget extends StatelessWidget {
-  const _IngredientInstructionFieldWidget();
-
-  @override
-  Widget build(BuildContext context) {
-    return                 Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'İçindekiler',
-          style: TextStyle(
-            fontSize: 20,
-            color: ColorExtension.brand_primary,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-
-        Text(
-          '3 Malzeme',
-          style: TextStyle(
-            fontSize: 16,
-            color: ColorExtension.neutral_grey_1,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-
-        SizedBox(height: 12),
-
-        ListView.separated(
-          shrinkWrap: true,
-          itemCount: 3,
-          separatorBuilder: (BuildContext context, int index) => SizedBox(height: 16),
-          scrollDirection: Axis.vertical,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 24),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: ColorExtension.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: ColorExtension.darker_blue,
-                    blurRadius: 16,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    'Kuzu Eti',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: ColorExtension.neutral_dark,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  Spacer(),
-                  Text(
-                    'Kuzu Eti',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: ColorExtension.neutral_dark,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
-
-      ],
-    );
-  }
-}
-
-final class _ItemInformationRowWidget extends StatelessWidget {
-  const _ItemInformationRowWidget();
+final class _IngredientBoxWidget extends StatelessWidget {
+  const _IngredientBoxWidget({required this.ingredient});
+  final Ingredient ingredient;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Text(
-          'İskender Kebap',
+          ingredient.name,
+          style: TextStyle(
+            fontSize: 18,
+            color: ColorExtension.neutral_dark,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        Spacer(),
+        Text(
+          '${ingredient.amount} gr',
+          style: TextStyle(
+            fontSize: 16,
+            color: ColorExtension.neutral_dark,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+final class _InstructionBoxWidget extends StatelessWidget {
+  const _InstructionBoxWidget({required this.instruction});
+  final String instruction;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      instruction,
+      style: TextStyle(
+        fontSize: 16,
+        color: ColorExtension.neutral_dark,
+        fontWeight: FontWeight.w500,
+      ),
+    );
+  }
+}
+
+final class _ItemInformationRowWidget extends StatelessWidget {
+  const _ItemInformationRowWidget({required this.title, required this.min});
+  final String title;
+  final int min;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          title,
           style: TextStyle(
             color: ColorExtension.neutral_dark,
             fontFamily: FontFamilyEnum.sofiaPro.value,
@@ -135,7 +192,7 @@ final class _ItemInformationRowWidget extends StatelessWidget {
         Spacer(),
 
         Text(
-          '15 Dk',
+          '$min Dk',
           style: TextStyle(
             color: ColorExtension.neutral_grey_1,
             fontFamily: FontFamilyEnum.sofiaPro.value,
@@ -149,7 +206,8 @@ final class _ItemInformationRowWidget extends StatelessWidget {
 }
 
 final class _InformationTextWidget extends StatelessWidget {
-  const _InformationTextWidget();
+  const _InformationTextWidget({required this.description});
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -159,7 +217,7 @@ final class _InformationTextWidget extends StatelessWidget {
         children: [
 
           TextSpan(
-            text: 'Döner et, pide, domates sosu ve yoğurt ile ',
+            text: description,
             style: TextStyle(
               fontSize: 16,
               color: ColorExtension.neutral_grey_1,
@@ -169,7 +227,7 @@ final class _InformationTextWidget extends StatelessWidget {
           ),
 
           TextSpan(
-            text: 'Daha fazla gör',
+            text: ' Daha fazla gör',
             style: TextStyle(
               fontSize: 16,
               color: ColorExtension.brand_primary,
@@ -183,7 +241,16 @@ final class _InformationTextWidget extends StatelessWidget {
 }
 
 final class _StatColumnWidget extends StatelessWidget {
-  const _StatColumnWidget();
+  const _StatColumnWidget({
+    required this.fat,
+    required this.protein,
+    required this.cal,
+    required this.carb,
+  });
+  final int fat;
+  final int protein;
+  final int cal;
+  final int carb;
 
   @override
   Widget build(BuildContext context) {
@@ -191,8 +258,8 @@ final class _StatColumnWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.FAT, title: '91g Yağ')),
-            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.PROTEIN, title: '27g Protein')),
+            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.FAT, title: '${fat}g Yağ')),
+            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.PROTEIN, title: '${protein}g Protein')),
           ],
         ),
 
@@ -200,8 +267,8 @@ final class _StatColumnWidget extends StatelessWidget {
 
         Row(
           children: [
-            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.CAL, title: '120 Kcal')),
-            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.CARB, title: '65g KH')),
+            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.CAL, title: '${cal} Kcal')),
+            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.CARB, title: '${carb}g KH')),
           ],
         ),
       ],
@@ -245,15 +312,33 @@ final class _ToolBarWidget extends StatelessWidget {
 }
 
 final class _ImageWidget extends StatelessWidget {
-  const _ImageWidget();
+  const _ImageWidget({required this.image});
+  final String image;
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      'https://case-backend.vercel.app/images/karniyarik.jpg',
+    return SizedBox(
       height: 300,
       width: double.infinity,
-      fit: BoxFit.cover,
+      child: image.isNotEmpty ? Image.network(
+        image,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) => Container(
+          color: Colors.grey[200],
+          child: const Icon(
+            Icons.image_not_supported,
+            size: 60,
+            color: Colors.grey,
+          ),
+        ),
+      ) : Container(
+        color: Colors.grey[200],
+        child: const Icon(
+          Icons.image_not_supported,
+          size: 60,
+          color: Colors.grey,
+        ),
+      ),
     );
   }
 }

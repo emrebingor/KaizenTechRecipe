@@ -74,8 +74,9 @@ final class _CategoryFieldWidget extends StatelessWidget {
 }
 
 final class _RecipeFieldWidget extends StatelessWidget {
-  const _RecipeFieldWidget(this.recipes);
+  const _RecipeFieldWidget({required this.recipes, required this.onTap});
   final List<GetRecipeResponseModel> recipes;
+  final void Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +96,9 @@ final class _RecipeFieldWidget extends StatelessWidget {
               final GetRecipeResponseModel recipe = recipes[index];
               return InkWell(
                 onTap: () {
-                  context.push(RoutePaths.itemDetail);
+                  if(recipe.id != null) {
+                    onTap(recipe.id!);
+                  }
                 },
                 child: RecipeListBoxWidget(
                   image: recipe.image ?? '',

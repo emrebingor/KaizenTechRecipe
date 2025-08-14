@@ -22,8 +22,11 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const SearchScreen(),
     ),
     GoRoute(
-      path: RoutePaths.itemDetail,
-      builder: (context, state) => const ItemDetailScreen(),
+      path: '/itemDetail/:id',
+      builder: (context, state) {
+        final id = state.pathParameters['id'];
+        return ItemDetailScreen(id: id);
+      },
     ),
   ],
   errorBuilder: (context, state) => Scaffold(
