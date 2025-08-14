@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaizen_tech_recipe/core/bloc_providers.dart';
 import 'package:kaizen_tech_recipe/core/navigation/app_router.dart';
+import 'package:kaizen_tech_recipe/data/provider/recipe_provider.dart';
 import 'package:kaizen_tech_recipe/data/provider/tab_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,7 @@ final class MyApp extends StatelessWidget {
       providers: [
         ...appBlocProviders,
         ChangeNotifierProvider(create: (_) => TabProvider()),
+        ChangeNotifierProvider(create: (_) => RecipeProvider()),
       ],
       child: MaterialApp.router(
         routerConfig: appRouter,

@@ -9,6 +9,7 @@ import 'package:kaizen_tech_recipe/core/base/view/base_view.dart';
 import 'package:kaizen_tech_recipe/data/bloc/home/home_bloc.dart';
 import 'package:kaizen_tech_recipe/data/bloc/home/home_event.dart';
 import 'package:kaizen_tech_recipe/data/bloc/home/home_state.dart';
+import 'package:kaizen_tech_recipe/data/provider/recipe_provider.dart';
 import 'package:kaizen_tech_recipe/enum/font_family_enum.dart';
 import 'package:kaizen_tech_recipe/enum/image_path_enum.dart';
 import 'package:kaizen_tech_recipe/models/get_category_response_model.dart';
@@ -35,7 +36,14 @@ class _HomeScreenState extends BaseViewState<HomeScreen> with HomeScreenMixin {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: BlocConsumer<HomeBloc, HomeState>(
-          listener: (BuildContext context, HomeState state) {},
+          listener: (BuildContext context, HomeState state) {
+            if(state.recipes?.isNotEmpty ?? false) {
+              context.read<RecipeProvider>().setRecipeList(state.recipes!);
+            }
+            if(state.categories?.isNotEmpty ?? false) {
+              context.read<RecipeProvider>().setCategoryList(state.categories!);
+            }
+          },
           builder: (BuildContext context, HomeState state) {
             return SafeArea(
               child: Padding(
