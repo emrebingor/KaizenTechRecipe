@@ -38,6 +38,11 @@ mixin SearchScreenMixin on BaseViewState<SearchScreen> {
     _searchBloc.add(SelectedCategoryUpdate(category, recipe));
   }
 
+  void searchFieldUpdate(String value) {
+    final allRecipes = context.read<RecipeProvider>().recipes;
+    _searchBloc.add(SearchRecipeEvent(query: value, recipe: allRecipes));
+  }
+
   void itemDetailNavigation(int id) {
     context.push(RoutePaths.itemDetail.replaceFirst(':id', '$id'));
   }

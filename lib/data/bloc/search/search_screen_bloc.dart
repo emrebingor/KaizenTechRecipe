@@ -12,10 +12,26 @@ final class SearchBloc extends BaseBloc<SearchScreenAction, SearchScreenState> {
       : super(SearchScreenState()) {
     on<SelectedCategoryUpdate>(_updateSelectedCategory);
     on<SearchScreenInitAction>(_searchInitAction);
+    on<SearchRecipeEvent>(_searchRecipe);
   }
 
   Future<void> _searchInitAction(SearchScreenInitAction event, Emitter<SearchScreenState> emit) async {
     emit(state.copyWith(filteredRecipe: event.recipe));
+  }
+
+  Future<void> _searchRecipe(SearchRecipeEvent event, Emitter<SearchScreenState> emit) async {
+    final query = event.query.toLowerCase();
+
+    if (event.recipe == null) {
+      emit(state.copyWith(filteredRecipe: []));
+      return;
+    }
+
+    final filtered = event.recipe!
+        .where((recipe) => recipe.name?.toLowerCase().startsWith(query) ?? false)
+        .toList();
+
+    emit(state.copyWith(filteredRecipe: filtered));
   }
 
   Future<void> _updateSelectedCategory(SelectedCategoryUpdate event, Emitter<SearchScreenState> emit) async {

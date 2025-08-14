@@ -50,7 +50,13 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: Column(
                     children: [
-                      TextFieldWidget(controller: searchController, hintText: 'Arama'),
+                      TextFieldWidget(
+                        controller: searchController,
+                        hintText: 'Arama',
+                        onChanged: (value) {
+                          searchFieldUpdate(value);
+                        },
+                      ),
 
                       SizedBox(height: 16),
 

@@ -13,6 +13,12 @@ final class SearchScreenInitAction extends SearchScreenAction {
   final List<GetRecipeResponseModel> recipe;
 }
 
+final class SearchRecipeEvent extends SearchScreenAction {
+  const SearchRecipeEvent({required this.query, required this.recipe});
+  final String query;
+  final List<GetRecipeResponseModel>? recipe;
+}
+
 @immutable
 final class SelectedCategoryUpdate extends SearchScreenAction {
   const SelectedCategoryUpdate(this.category, this.recipe);

@@ -5,9 +5,10 @@ import 'package:kaizen_tech_recipe/utils/extension/color_extension.dart';
 import 'package:kaizen_tech_recipe/utils/extension/image_path_extension.dart';
 
 final class TextFieldWidget extends StatelessWidget {
-  const TextFieldWidget({super.key, required this.controller, required this.hintText});
+  const TextFieldWidget({super.key, required this.controller, required this.hintText, this.onChanged});
   final TextEditingController controller;
   final String hintText;
+  final ValueChanged<String>? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ final class TextFieldWidget extends StatelessWidget {
 
           Expanded(
             child: TextField(
+              onChanged: onChanged,
               controller: controller,
               cursorColor: ColorExtension.white,
               decoration: InputDecoration(
