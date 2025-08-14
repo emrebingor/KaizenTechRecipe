@@ -17,5 +17,6 @@ enum ImagePathEnum {
   CAL,
   CARB,
   FAT,
-  PROTEIN
+  PROTEIN,
+  ONBOARDING
 }

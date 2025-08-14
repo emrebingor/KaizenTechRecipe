@@ -5,6 +5,7 @@ extension ImagePathEnumExtension on ImagePathEnum {
   String get getImagePath {
     const String _baseImagePath = 'assets/';
     const String _svgPath = 'svg/';
+    const String _pngPath = 'png/';
     String _imagePath = '';
 
     switch (this) {
@@ -64,6 +65,9 @@ extension ImagePathEnumExtension on ImagePathEnum {
         break;
       case ImagePathEnum.PROTEIN:
         _imagePath = _baseImagePath + _svgPath + 'ic_protein'.toSvg;
+        break;
+      case ImagePathEnum.ONBOARDING:
+        _imagePath = _baseImagePath + _pngPath + 'onboarding_image'.toPng;
         break;
     }
     return _imagePath;

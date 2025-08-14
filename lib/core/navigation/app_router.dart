@@ -3,12 +3,17 @@ import 'package:go_router/go_router.dart';
 import 'package:kaizen_tech_recipe/core/navigation/route_paths.dart';
 import 'package:kaizen_tech_recipe/screen/home/home_screen.dart';
 import 'package:kaizen_tech_recipe/screen/item_detail/item_detail_screen.dart';
+import 'package:kaizen_tech_recipe/screen/onboarding/onboarding_screen.dart';
 import 'package:kaizen_tech_recipe/screen/search/search_screen.dart';
 import 'package:kaizen_tech_recipe/screen/tab/tab_screen.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: RoutePaths.tab,
+  initialLocation: RoutePaths.onBoarding,
   routes: [
+    GoRoute(
+      path: RoutePaths.onBoarding,
+      builder: (context, state) => const OnboardingScreen(),
+    ),
     GoRoute(
       path: RoutePaths.tab,
       builder: (context, state) => const TabScreen(),
