@@ -62,8 +62,17 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (BuildContext context, int index) {
                             final GetCategoryResponseModel category = context.watch<RecipeProvider>().categoryList[index];
-                            return CategoryBoxWidget(
-                              title: category.name ?? '', isSelected: false,
+                            final bool isSelected = state.selectedCategory != null &&
+                                category.id == state.selectedCategory!.id;
+                            return InkWell(
+                              onTap: () => selectedCategoryUpdate(
+                                category,
+                                context.read<RecipeProvider>().recipes,
+                              ),
+                              child: CategoryBoxWidget(
+                                title: category.name ?? '',
+                                isSelected: isSelected,
+                              ),
                             );
                           },
                         ),
@@ -71,25 +80,47 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
 
                       SizedBox(height: 24),
 
-                      ListView.separated(
+
+                      state.filteredRecipe?.isEmpty ?? false ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.restaurant_menu,
+                              size: 64,
+                              color: ColorExtension.brand_primary,
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              'Kategoriye ait ürün şu an güncel ürün yoktur.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: FontFamilyEnum.sofiaPro.value,
+                                color: ColorExtension.brand_primary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ) : ListView.separated(
                         shrinkWrap: true,
-                        itemCount: context.watch<RecipeProvider>().recipes.length,
+                        itemCount: state.filteredRecipe?.length ?? 0,
                         separatorBuilder: (BuildContext context, int index) => SizedBox(height: 16),
                         scrollDirection: Axis.vertical,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, int index) {
-                          final GetRecipeResponseModel recipe = context.watch<RecipeProvider>().recipes[index];
+                          final GetRecipeResponseModel? recipe = state.filteredRecipe?[index];
                           return InkWell(
                             onTap: () {
-                              if(recipe.id != null) {
+                              if(recipe != null) {
                                 itemDetailNavigation(recipe.id!);
                               }
                             },
                             child: VerticalItemBoxWidget(
-                              image: recipe.image ?? '',
-                              title: recipe.name ?? '',
-                              calorie: '${recipe.calories} Kcal',
-                              time: '${recipe.cookTime} min',
+                              image: recipe?.image ?? '',
+                              title: recipe?.name ?? '',
+                              calorie: '${recipe?.calories} Kcal',
+                              time: '${recipe?.cookTime} min',
                             ),
                           );
                         },
