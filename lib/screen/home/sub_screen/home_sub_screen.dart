@@ -41,10 +41,12 @@ final class _HeaderFieldWidget extends StatelessWidget {
 }
 
 final class _CategoryFieldWidget extends StatelessWidget {
-  const _CategoryFieldWidget();
+  const _CategoryFieldWidget(this.categories);
+  final List<GetCategoryResponseModel> categories;
 
   @override
   Widget build(BuildContext context) {
+    if(categories.isEmpty) return SizedBox.shrink();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -55,12 +57,13 @@ final class _CategoryFieldWidget extends StatelessWidget {
         SizedBox(
           height: 41,
           child: ListView.separated(
-            itemCount: 3,
+            itemCount: categories.length,
             separatorBuilder: (BuildContext context, int index) => SizedBox(width: 12),
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
+              final GetCategoryResponseModel category = categories[index];
               return CategoryBoxWidget(
-                title: 'Ana Yemek',
+                title: category.name ?? '',
               );
             },
           ),

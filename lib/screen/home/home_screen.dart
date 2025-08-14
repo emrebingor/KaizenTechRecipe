@@ -13,6 +13,7 @@ import 'package:kaizen_tech_recipe/data/bloc/home/home_event.dart';
 import 'package:kaizen_tech_recipe/data/bloc/home/home_state.dart';
 import 'package:kaizen_tech_recipe/enum/font_family_enum.dart';
 import 'package:kaizen_tech_recipe/enum/image_path_enum.dart';
+import 'package:kaizen_tech_recipe/models/get_category_response_model.dart';
 import 'package:kaizen_tech_recipe/models/get_recipe_response_model.dart';
 import 'package:kaizen_tech_recipe/screen/home/mixin/home_screen_mixin.dart';
 import 'package:kaizen_tech_recipe/utils/extension/color_extension.dart';
@@ -47,7 +48,7 @@ class _HomeScreenState extends BaseViewState<HomeScreen> with HomeScreenMixin {
 
                     SizedBox(height: 24),
 
-                    _CategoryFieldWidget(),
+                    _CategoryFieldWidget(state.categories ?? []),
 
                     SizedBox(height: 24),
 
