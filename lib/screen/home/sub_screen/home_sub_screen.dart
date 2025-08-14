@@ -71,33 +71,34 @@ final class _CategoryFieldWidget extends StatelessWidget {
 }
 
 final class _RecipeFieldWidget extends StatelessWidget {
-  const _RecipeFieldWidget();
+  const _RecipeFieldWidget(this.recipes);
+  final List<GetRecipeResponseModel> recipes;
 
   @override
   Widget build(BuildContext context) {
+    if(recipes.isEmpty) return SizedBox.shrink();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TitleTextWidget(title: 'Tarifler'),
 
-        SizedBox(height: 12),
-
         SizedBox(
-          height: 240,
+          height: 270,
           child: ListView.separated(
-            itemCount: 3,
+            itemCount: recipes.length,
             separatorBuilder: (BuildContext context, int index) => SizedBox(width: 16),
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
+              final GetRecipeResponseModel recipe = recipes[index];
               return InkWell(
                 onTap: () {
                   context.push(RoutePaths.itemDetail);
                 },
                 child: RecipeListBoxWidget(
-                  image: 'https://case-backend.vercel.app/images/karniyarik.jpg',
-                  title: 'Karnıyarık',
-                  calorie: '120 Kcal',
-                  time: '20 Min',
+                  image: recipe.image ?? '',
+                  title: recipe.name ?? '',
+                  calorie: '${recipe.calories} Kcal',
+                  time: '${recipe.cookTime} Min',
                 ),
               );
             },
