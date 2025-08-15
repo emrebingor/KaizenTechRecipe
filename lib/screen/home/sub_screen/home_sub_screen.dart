@@ -41,7 +41,11 @@ final class _HeaderFieldWidget extends StatelessWidget {
 }
 
 final class _CategoryFieldWidget extends StatelessWidget {
-  const _CategoryFieldWidget({required this.categories, required this.onTap, required this.selectedCategory});
+  const _CategoryFieldWidget({
+    required this.categories,
+    required this.onTap,
+    required this.selectedCategory,
+  });
   final List<GetCategoryResponseModel> categories;
   final GetCategoryResponseModel? selectedCategory;
   final void Function(GetCategoryResponseModel) onTap;
@@ -80,7 +84,10 @@ final class _CategoryFieldWidget extends StatelessWidget {
 }
 
 final class _RecipeFieldWidget extends StatelessWidget {
-  const _RecipeFieldWidget({required this.recipes, required this.onTap});
+  const _RecipeFieldWidget({
+    required this.recipes,
+    required this.onTap,
+  });
   final List<GetRecipeResponseModel> recipes;
   final void Function(int) onTap;
 
@@ -96,7 +103,9 @@ final class _RecipeFieldWidget extends StatelessWidget {
               size: 64,
               color: ColorExtension.brand_primary,
             ),
+
             const SizedBox(height: 16),
+
             Text(
               'Kategoriye ait ürün şu an güncel ürün yoktur.',
               textAlign: TextAlign.center,
@@ -131,10 +140,7 @@ final class _RecipeFieldWidget extends StatelessWidget {
                   }
                 },
                 child: RecipeListBoxWidget(
-                  image: recipe.image ?? '',
-                  title: recipe.name ?? '',
-                  calorie: '${recipe.calories} Kcal',
-                  time: '${recipe.cookTime} Min',
+                  recipe: recipe,
                 ),
               );
             },

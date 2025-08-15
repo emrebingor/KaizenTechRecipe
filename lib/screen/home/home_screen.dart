@@ -28,7 +28,7 @@ final class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends BaseViewState<HomeScreen> with HomeScreenMixin {
+final class _HomeScreenState extends BaseViewState<HomeScreen> with HomeScreenMixin {
   @override
   Widget build(BuildContext context) {
     return BaseView<HomeBloc, HomeAction, HomeState>(
@@ -38,14 +38,7 @@ class _HomeScreenState extends BaseViewState<HomeScreen> with HomeScreenMixin {
         child: Scaffold(
           backgroundColor: Colors.white,
           body: BlocConsumer<HomeBloc, HomeState>(
-            listener: (BuildContext context, HomeState state) {
-              if(state.recipes?.isNotEmpty ?? false) {
-                context.read<RecipeProvider>().setRecipeList(state.recipes!);
-              }
-              if(state.categories?.isNotEmpty ?? false) {
-                context.read<RecipeProvider>().setCategoryList(state.categories!);
-              }
-            },
+            listener: blocListener,
             builder: (BuildContext context, HomeState state) {
               return SafeArea(
                 child: SingleChildScrollView(
