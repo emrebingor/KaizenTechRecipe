@@ -45,7 +45,7 @@ final class HomeBloc extends BaseBloc<HomeAction, HomeState> {
     if (state.selectedCategory?.id == event.category.id) {
       emit(
         state.copyWith(
-          selectedCategory: null,
+          selectedCategory: GetCategoryResponseModel(id: 'empty'),
           filteredRecipe: state.recipes ?? [],
         ),
       );

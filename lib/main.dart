@@ -25,6 +25,8 @@ final class MyApp extends StatelessWidget {
         routerConfig: appRouter,
         theme: ThemeData(
           fontFamily: 'SofiaPro',
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
         ),
         debugShowCheckedModeBanner: false,
       ),

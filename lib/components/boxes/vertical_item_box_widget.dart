@@ -42,8 +42,17 @@ final class VerticalItemBoxWidget extends StatelessWidget {
       child: Row(
         children: [
           ClipRRect(
-            borderRadius:  BorderRadius.circular(16),
-            child: Image.network(
+            borderRadius: BorderRadius.circular(16),
+            child: image.isEmpty ? Container(
+              height: 84,
+              width: 100,
+              color: ColorExtension.neutral_grey_4,
+              child: const Icon(
+                Icons.image_not_supported,
+                size: 60,
+                color: Colors.grey,
+              ),
+            ) : Image.network(
               height: 84,
               width: 100,
               image,
@@ -85,15 +94,16 @@ final class VerticalItemBoxWidget extends StatelessWidget {
             ],
           ),
 
-          Spacer(),
 
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: CircleAvatar(
-              radius: 14,
-              backgroundColor: ColorExtension.brand_primary,
-              child: SvgPicture.asset(
-                ImagePathEnum.ARROW_RIGHT.getImagePath,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: CircleAvatar(
+                radius: 14,
+                backgroundColor: ColorExtension.brand_primary,
+                child: SvgPicture.asset(
+                  ImagePathEnum.ARROW_RIGHT.getImagePath,
+                ),
               ),
             ),
           )

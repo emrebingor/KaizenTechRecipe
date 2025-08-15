@@ -42,7 +42,16 @@ final class RecipeListBoxWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius:  BorderRadius.circular(16),
-                child: Image.network(
+                child: image.isEmpty ? Container(
+                  height: 128,
+                  width: 168,
+                  color: ColorExtension.neutral_grey_4,
+                  child: const Icon(
+                    Icons.image_not_supported,
+                    size: 60,
+                    color: Colors.grey,
+                  ),
+                ) : Image.network(
                   height: 128,
                   width: 168,
                   image,

@@ -324,7 +324,7 @@ final class _ImageWidget extends StatelessWidget {
         image,
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) => Container(
-          color: Colors.grey[200],
+          color: ColorExtension.neutral_grey_4,
           child: const Icon(
             Icons.image_not_supported,
             size: 60,
@@ -332,7 +332,7 @@ final class _ImageWidget extends StatelessWidget {
           ),
         ),
       ) : Container(
-        color: Colors.grey[200],
+        color: ColorExtension.neutral_grey_4,
         child: const Icon(
           Icons.image_not_supported,
           size: 60,

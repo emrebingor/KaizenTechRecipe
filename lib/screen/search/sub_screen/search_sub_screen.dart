@@ -22,21 +22,21 @@ final class _CategoryFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = context.watch<RecipeProvider>().categoryList;
+    if(categories.isEmpty) return SizedBox.shrink();
     return SizedBox(
       height: 41,
       child: ListView.separated(
-        itemCount: context.watch<RecipeProvider>().categoryList.length,
+        itemCount: categories.length,
         separatorBuilder: (BuildContext context, int index) => SizedBox(width: 12),
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          final GetCategoryResponseModel category = context.watch<RecipeProvider>().categoryList[index];
-          final bool isSelected = selectedCategory != null &&
-              category.id == selectedCategory!.id;
+          final GetCategoryResponseModel category = categories[index];
           return InkWell(
             onTap: () => onTap(category),
             child: CategoryBoxWidget(
-              title: category.name ?? '',
-              isSelected: isSelected,
+              category: category,
+              selectedCategory: selectedCategory,
             ),
           );
         },

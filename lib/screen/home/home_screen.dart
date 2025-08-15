@@ -48,28 +48,30 @@ class _HomeScreenState extends BaseViewState<HomeScreen> with HomeScreenMixin {
             },
             builder: (BuildContext context, HomeState state) {
               return SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _HeaderFieldWidget(),
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _HeaderFieldWidget(),
 
-                      SizedBox(height: 24),
+                        SizedBox(height: 24),
 
-                      _CategoryFieldWidget(
-                        categories: state.categories ?? [],
-                        onTap: selectedCategoryUpdate,
-                        selectedCategory: state.selectedCategory,
-                      ),
+                        _CategoryFieldWidget(
+                          categories: state.categories ?? [],
+                          onTap: selectedCategoryUpdate,
+                          selectedCategory: state.selectedCategory,
+                        ),
 
-                      SizedBox(height: 24),
+                        SizedBox(height: 24),
 
-                      _RecipeFieldWidget(
-                        recipes: state.filteredRecipe ?? [],
-                          onTap: (id) => itemDetailNavigation(id),
-                      ),
-                    ],
+                        _RecipeFieldWidget(
+                          recipes: state.filteredRecipe ?? [],
+                            onTap: (id) => itemDetailNavigation(id),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ).withLoading(state.isLoading);

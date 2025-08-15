@@ -64,14 +64,11 @@ final class _CategoryFieldWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
               final GetCategoryResponseModel category = categories[index];
-              final bool isSelected = selectedCategory != null &&
-                      category.id == selectedCategory!.id;
-
               return GestureDetector(
                 onTap: () => onTap(category),
                 child: CategoryBoxWidget(
-                  title: category.name ?? '',
-                  isSelected: isSelected,
+                  category: category,
+                  selectedCategory: selectedCategory,
                 ),
               );
             },

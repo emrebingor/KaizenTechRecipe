@@ -4,6 +4,7 @@ import 'package:kaizen_tech_recipe/data/bloc/search/search_screen_event.dart';
 import 'package:kaizen_tech_recipe/data/bloc/search/search_screen_state.dart';
 import 'package:kaizen_tech_recipe/domain/use_case/category_use_case.dart';
 import 'package:kaizen_tech_recipe/domain/use_case/recipe_use_case.dart';
+import 'package:kaizen_tech_recipe/models/get_category_response_model.dart';
 import 'package:kaizen_tech_recipe/models/get_recipe_response_model.dart';
 
 final class SearchBloc extends BaseBloc<SearchScreenAction, SearchScreenState> {
@@ -22,15 +23,18 @@ final class SearchBloc extends BaseBloc<SearchScreenAction, SearchScreenState> {
 
   Future<void> _searchRecipe(SearchRecipeEvent event, Emitter<SearchScreenState> emit) async {
     final query = event.query.toLowerCase();
+    final allRecipes = event.recipe ?? [];
 
-    if (event.recipe == null) {
-      emit(state.copyWith(filteredRecipe: []));
-      return;
+    List<GetRecipeResponseModel> filtered = allRecipes;
+    if (state.selectedCategory != null) {
+      filtered = filtered
+          .where((recipe) => recipe.categoryId == state.selectedCategory!.id)
+          .toList();
     }
 
-    final filtered = event.recipe!
-        .where((recipe) => recipe.name?.toLowerCase()
-        .startsWith(query) ?? false).toList();
+    filtered = filtered
+        .where((recipe) => recipe.name?.toLowerCase().startsWith(query) ?? false)
+        .toList();
 
     emit(state.copyWith(filteredRecipe: filtered));
   }
@@ -40,7 +44,7 @@ final class SearchBloc extends BaseBloc<SearchScreenAction, SearchScreenState> {
 
     if (state.selectedCategory?.id == event.category.id) {
       emit(state.copyWith(
-        selectedCategory: null,
+        selectedCategory: GetCategoryResponseModel(id: 'empty'),
         filteredRecipe: event.recipe,
         ),
       );
