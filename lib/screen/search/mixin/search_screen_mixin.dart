@@ -23,7 +23,11 @@ mixin SearchScreenMixin on BaseViewState<SearchScreen> {
     super.initState();
     _searchController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _searchBloc.add(SearchScreenInitAction(context.read<RecipeProvider>().recipes));
+      _searchBloc.add(
+        SearchScreenInitAction(
+          context.read<RecipeProvider>().recipes,
+        ),
+      );
     });
   }
 

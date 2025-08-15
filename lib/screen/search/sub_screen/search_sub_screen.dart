@@ -59,7 +59,9 @@ final class _EmptyRecipeWidget extends StatelessWidget {
             size: 64,
             color: ColorExtension.brand_primary,
           ),
+
           const SizedBox(height: 16),
+
           Text(
             'Kategoriye ait ürün şu an güncel ürün yoktur.',
             textAlign: TextAlign.center,
@@ -93,10 +95,7 @@ final class _RecipeListWidget extends StatelessWidget {
         return InkWell(
           onTap: () => onTap(recipe?.id ?? 0),
           child: VerticalItemBoxWidget(
-            image: recipe?.image ?? '',
-            title: recipe?.name ?? '',
-            calorie: '${recipe?.calories} Kcal',
-            time: '${recipe?.cookTime} min',
+            recipe: recipe,
           ),
         );
       },
