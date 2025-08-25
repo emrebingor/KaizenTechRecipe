@@ -57,7 +57,7 @@ final class _EmptyRecipeWidget extends StatelessWidget {
           Icon(
             Icons.restaurant_menu,
             size: 64,
-            color: ColorExtension.brand_primary,
+            color: ColorExtension.brandPrimary,
           ),
 
           const SizedBox(height: 16),
@@ -68,7 +68,7 @@ final class _EmptyRecipeWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontFamily: FontFamilyEnum.sofiaPro.value,
-              color: ColorExtension.brand_primary,
+              color: ColorExtension.brandPrimary,
             ),
           ),
         ],

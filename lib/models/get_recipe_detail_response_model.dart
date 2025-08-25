@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'get_recipe_detail_response_model.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 final class GetRecipeDetailResponseModel {
   final int id;
   final String name;
@@ -56,6 +61,7 @@ final class GetRecipeDetailResponseModel {
   }
 }
 
+@JsonSerializable(fieldRename: FieldRename.snake)
 final class Ingredient {
   final String name;
   final num amount;
@@ -84,6 +90,7 @@ final class Ingredient {
   }
 }
 
+@JsonSerializable(fieldRename: FieldRename.snake)
 final class Nutrition {
   final int calories;
   final int protein;

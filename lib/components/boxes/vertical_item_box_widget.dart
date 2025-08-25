@@ -22,11 +22,11 @@ final class VerticalItemBoxWidget extends StatelessWidget {
         color: ColorExtension.white,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: ColorExtension.light_white,
+          color: ColorExtension.lightWhite,
         ),
         boxShadow: [
           BoxShadow(
-            color: ColorExtension.darker_blue,
+            color: ColorExtension.darkerBlue,
             blurRadius: 16,
             offset: const Offset(0, 2),
           ),
@@ -76,7 +76,7 @@ final class _ImageWidget extends StatelessWidget {
       child: image.isEmpty ? Container(
         height: 84,
         width: 100,
-        color: ColorExtension.neutral_grey_4,
+        color: ColorExtension.neutralGrey4,
         child: const Icon(
           Icons.image_not_supported,
           size: 60,
@@ -105,7 +105,7 @@ final class _TitleTextWidget extends StatelessWidget {
       style: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w700,
-        color: ColorExtension.neutral_dark,
+        color: ColorExtension.neutralDark,
         fontFamily: FontFamilyEnum.sofiaPro.value,
       ),
     );
@@ -125,7 +125,7 @@ final class _TimeCalorieRowWidget extends StatelessWidget {
     return Row(
       children: [
         CalorieIconRowWidget(
-          icon: ImagePathEnum.CALORIES,
+          icon: ImagePathEnum.calories,
           title: '$calorie Kcal',
         ),
 
@@ -134,7 +134,7 @@ final class _TimeCalorieRowWidget extends StatelessWidget {
         Text(
           '.',
           style: TextStyle(
-            color: ColorExtension.neutral_grey_2,
+            color: ColorExtension.neutralGrey2,
             fontWeight: FontWeight.w600,
             fontSize: 20,
           ),
@@ -143,7 +143,7 @@ final class _TimeCalorieRowWidget extends StatelessWidget {
         SizedBox(width: 8),
 
         CalorieIconRowWidget(
-          icon: ImagePathEnum.TIME,
+          icon: ImagePathEnum.time,
           title: '$time Dk',
         )
       ],
@@ -161,9 +161,9 @@ final class _ArrowIconWidget extends StatelessWidget {
         padding: const EdgeInsets.only(right: 8),
         child: CircleAvatar(
           radius: 14,
-          backgroundColor: ColorExtension.brand_primary,
+          backgroundColor: ColorExtension.brandPrimary,
           child: SvgPicture.asset(
-            ImagePathEnum.ARROW_RIGHT.getImagePath,
+            ImagePathEnum.arrowRight.getImagePath,
           ),
         ),
       ),

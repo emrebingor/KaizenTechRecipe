@@ -15,7 +15,7 @@ final class OnboardingScreen extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              ImagePathEnum.ONBOARDING.getImagePath,
+              ImagePathEnum.onboarding.getImagePath,
               fit: BoxFit.cover,
             ),
           ),

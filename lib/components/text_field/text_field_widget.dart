@@ -17,13 +17,13 @@ final class TextFieldWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           width: 2,
-          color: ColorExtension.neutral_grey_4,
+          color: ColorExtension.neutralGrey4,
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
       child: Row(
         children: [
-          SvgPicture.asset(ImagePathEnum.TEXT_FIELD_SEARCH.getImagePath),
+          SvgPicture.asset(ImagePathEnum.textFieldSearch.getImagePath),
 
           const SizedBox(width: 16),
 
@@ -34,7 +34,7 @@ final class TextFieldWidget extends StatelessWidget {
               cursorColor: ColorExtension.white,
               decoration: InputDecoration(
                 hintText: hintText,
-                hintStyle: TextStyle(color: ColorExtension.neutral_grey_2),
+                hintStyle: TextStyle(color: ColorExtension.neutralGrey2),
                 border: InputBorder.none,
               ),
             ),

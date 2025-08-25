@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'get_recipe_response_model.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 final class GetRecipeResponseModel {
   GetRecipeResponseModel({
     this.id,

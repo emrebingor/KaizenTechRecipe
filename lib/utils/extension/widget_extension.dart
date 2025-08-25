@@ -12,7 +12,7 @@ extension WidgetExtension on Widget {
             backgroundColor: Colors.white,
             body: Center(
               child: CircularProgressIndicator(
-                color: ColorExtension.brand_primary,
+                color: ColorExtension.brandPrimary,
               ),
             ),
           ) : const SizedBox.shrink(),

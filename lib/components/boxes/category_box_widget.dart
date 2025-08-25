@@ -18,12 +18,12 @@ final class CategoryBoxWidget extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
-        color: isSelected ? ColorExtension.brand_secondary : ColorExtension.light_grey,
+        color: isSelected ? ColorExtension.brandSecondary : ColorExtension.lightGrey,
       ),
       child: Text(
         category.name ?? '',
         style: TextStyle(
-          color: isSelected && selectedCategory?.id != 'empty' ? ColorExtension.white : ColorExtension.neutral_dark,
+          color: isSelected && selectedCategory?.id != 'empty' ? ColorExtension.white : ColorExtension.neutralDark,
           fontFamily: FontFamilyEnum.sofiaPro.value,
           fontWeight: FontWeight.w400,
           fontSize: 16,

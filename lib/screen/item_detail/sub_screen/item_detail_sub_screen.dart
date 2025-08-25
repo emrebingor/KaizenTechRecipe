@@ -16,7 +16,7 @@ final class _TabBarWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: ColorExtension.neutral_grey_4,
+        color: ColorExtension.neutralGrey4,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -51,7 +51,7 @@ final class _IngredientInstructionFieldWidget extends StatelessWidget {
             selectedTab == TabType.instructions ? 'Talimatlar' : 'İçindekiler',
             style: TextStyle(
               fontSize: 20,
-              color: ColorExtension.brand_primary,
+              color: ColorExtension.brandPrimary,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -60,7 +60,7 @@ final class _IngredientInstructionFieldWidget extends StatelessWidget {
             selectedTab == TabType.instructions ? '${recipe.instructions.length} Adım' : '${recipe.ingredients.length} Malzeme',
             style: TextStyle(
               fontSize: 16,
-              color: ColorExtension.neutral_grey_1,
+              color: ColorExtension.neutralGrey1,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -88,7 +88,7 @@ final class _IngredientInstructionFieldWidget extends StatelessWidget {
                     color: ColorExtension.white,
                     boxShadow: [
                       BoxShadow(
-                        color: ColorExtension.darker_blue,
+                        color: ColorExtension.darkerBlue,
                         blurRadius: 16,
                         offset: const Offset(0, 2),
                       ),
@@ -105,7 +105,7 @@ final class _IngredientInstructionFieldWidget extends StatelessWidget {
                     color: ColorExtension.white,
                     boxShadow: [
                       BoxShadow(
-                        color: ColorExtension.darker_blue,
+                        color: ColorExtension.darkerBlue,
                         blurRadius: 16,
                         offset: const Offset(0, 2),
                       ),
@@ -136,7 +136,7 @@ final class _IngredientBoxWidget extends StatelessWidget {
           ingredient.name,
           style: TextStyle(
             fontSize: 18,
-            color: ColorExtension.neutral_dark,
+            color: ColorExtension.neutralDark,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -145,7 +145,7 @@ final class _IngredientBoxWidget extends StatelessWidget {
           '${ingredient.amount} gr',
           style: TextStyle(
             fontSize: 16,
-            color: ColorExtension.neutral_dark,
+            color: ColorExtension.neutralDark,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -164,7 +164,7 @@ final class _InstructionBoxWidget extends StatelessWidget {
       instruction,
       style: TextStyle(
         fontSize: 16,
-        color: ColorExtension.neutral_dark,
+        color: ColorExtension.neutralDark,
         fontWeight: FontWeight.w500,
       ),
     );
@@ -183,7 +183,7 @@ final class _ItemInformationRowWidget extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            color: ColorExtension.neutral_dark,
+            color: ColorExtension.neutralDark,
             fontFamily: FontFamilyEnum.sofiaPro.value,
             fontWeight: FontWeight.w700,
             fontSize: 24,
@@ -194,7 +194,7 @@ final class _ItemInformationRowWidget extends StatelessWidget {
         Text(
           '$min Dk',
           style: TextStyle(
-            color: ColorExtension.neutral_grey_1,
+            color: ColorExtension.neutralGrey1,
             fontFamily: FontFamilyEnum.sofiaPro.value,
             fontWeight: FontWeight.w400,
             fontSize: 14,
@@ -220,7 +220,7 @@ final class _InformationTextWidget extends StatelessWidget {
             text: description,
             style: TextStyle(
               fontSize: 16,
-              color: ColorExtension.neutral_grey_1,
+              color: ColorExtension.neutralGrey1,
               fontFamily: FontFamilyEnum.sofiaPro.value,
               fontWeight: FontWeight.w400,
             ),
@@ -230,7 +230,7 @@ final class _InformationTextWidget extends StatelessWidget {
             text: ' Daha fazla gör',
             style: TextStyle(
               fontSize: 16,
-              color: ColorExtension.brand_primary,
+              color: ColorExtension.brandPrimary,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -258,8 +258,8 @@ final class _StatColumnWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.FAT, title: '${fat}g Yağ')),
-            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.PROTEIN, title: '${protein}g Protein')),
+            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.fat, title: '${fat}g Yağ')),
+            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.protein, title: '${protein}g Protein')),
           ],
         ),
 
@@ -267,8 +267,8 @@ final class _StatColumnWidget extends StatelessWidget {
 
         Row(
           children: [
-            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.CAL, title: '${cal} Kcal')),
-            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.CARB, title: '${carb}g KH')),
+            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.cal, title: '${cal} Kcal')),
+            Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.carb, title: '${carb}g KH')),
           ],
         ),
       ],
@@ -303,7 +303,7 @@ final class _ToolBarWidget extends StatelessWidget {
               color: ColorExtension.white,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: SvgPicture.asset(ImagePathEnum.HEART.getImagePath),
+            child: SvgPicture.asset(ImagePathEnum.heart.getImagePath),
           ),
         ],
       ),
@@ -324,7 +324,7 @@ final class _ImageWidget extends StatelessWidget {
         image,
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) => Container(
-          color: ColorExtension.neutral_grey_4,
+          color: ColorExtension.neutralGrey4,
           child: const Icon(
             Icons.image_not_supported,
             size: 60,
@@ -332,7 +332,7 @@ final class _ImageWidget extends StatelessWidget {
           ),
         ),
       ) : Container(
-        color: ColorExtension.neutral_grey_4,
+        color: ColorExtension.neutralGrey4,
         child: const Icon(
           Icons.image_not_supported,
           size: 60,

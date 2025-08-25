@@ -33,10 +33,10 @@ final class _TabScreenState extends State<TabScreen> {
         body: pages[tabProvider.selectedIndex],
         floatingActionButton: FloatingActionButton(
           shape: CircleBorder(),
-          backgroundColor: ColorExtension.brand_primary,
+          backgroundColor: ColorExtension.brandPrimary,
           onPressed: () {},
           child: SvgPicture.asset(
-            ImagePathEnum.CHEF.getImagePath,
+            ImagePathEnum.chef.getImagePath,
             color: Colors.white,
           ),
         ),

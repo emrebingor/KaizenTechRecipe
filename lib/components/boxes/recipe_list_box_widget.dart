@@ -23,7 +23,7 @@ final class RecipeListBoxWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: ColorExtension.darker_blue,
+            color: ColorExtension.darkerBlue,
             blurRadius: 16,
             offset: const Offset(0, 2),
           ),
@@ -46,7 +46,7 @@ final class RecipeListBoxWidget extends StatelessWidget {
           Text(
             recipe.name ?? '',
             style: TextStyle(
-              color: ColorExtension.neutral_dark,
+              color: ColorExtension.neutralDark,
               fontFamily: FontFamilyEnum.sofiaPro.value,
               fontWeight: FontWeight.w700,
               fontSize: 16,
@@ -78,7 +78,7 @@ final class _ImageWidget extends StatelessWidget {
       child: image?.isEmpty ?? false ? Container(
         height: 128,
         width: 168,
-        color: ColorExtension.neutral_grey_4,
+        color: ColorExtension.neutralGrey4,
         child: const Icon(
           Icons.image_not_supported,
           size: 60,
@@ -109,7 +109,7 @@ final class _HeartIconWidget extends StatelessWidget {
           color: ColorExtension.white,
         ),
         child: SvgPicture.asset(
-          ImagePathEnum.HEART.getImagePath,
+          ImagePathEnum.heart.getImagePath,
         ),
       ),
     );
@@ -129,7 +129,7 @@ final class _CalorieTimeRowWidget extends StatelessWidget {
     return Row(
       children: [
         CalorieIconRowWidget(
-          icon: ImagePathEnum.CALORIES,
+          icon: ImagePathEnum.calories,
           title: '$calorie Kcal',
         ),
 
@@ -138,7 +138,7 @@ final class _CalorieTimeRowWidget extends StatelessWidget {
         Text(
           '.',
           style: TextStyle(
-            color: ColorExtension.neutral_grey_2,
+            color: ColorExtension.neutralGrey2,
             fontWeight: FontWeight.w600,
             fontSize: 20,
           ),
@@ -147,7 +147,7 @@ final class _CalorieTimeRowWidget extends StatelessWidget {
         SizedBox(width: 8),
 
         CalorieIconRowWidget(
-          icon: ImagePathEnum.TIME,
+          icon: ImagePathEnum.time,
           title: '$time Min',
         ),
       ],

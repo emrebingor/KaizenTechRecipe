@@ -20,7 +20,7 @@ final class IngredientBoxWidget extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: ColorExtension.neutral_grey_4,
+            color: ColorExtension.neutralGrey4,
             borderRadius: BorderRadius.circular(8),
           ),
           child: SvgPicture.asset(icon.getImagePath),
@@ -32,7 +32,7 @@ final class IngredientBoxWidget extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 16,
-            color: ColorExtension.neutral_dark,
+            color: ColorExtension.neutralDark,
             fontWeight: FontWeight.w400,
           ),
         )

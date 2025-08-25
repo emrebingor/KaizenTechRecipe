@@ -27,7 +27,7 @@ final class TabButton extends StatelessWidget {
           duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
-            color: isSelected ? ColorExtension.neutral_dark : Colors.transparent,
+            color: isSelected ? ColorExtension.neutralDark : Colors.transparent,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Center(
@@ -37,7 +37,7 @@ final class TabButton extends StatelessWidget {
                   fontFamily: FontFamilyEnum.sofiaPro.value,
                   fontWeight: FontWeight.w700,
                   fontSize: 16,
-                  color: isSelected ? Colors.white : ColorExtension.neutral_dark
+                  color: isSelected ? Colors.white : ColorExtension.neutralDark
               ),
             ),
           ),

@@ -13,7 +13,7 @@ final class TitleTextWidget extends StatelessWidget {
       style: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w700,
-        color: ColorExtension.neutral_dark,
+        color: ColorExtension.neutralDark,
         fontFamily: FontFamilyEnum.sofiaPro.value,
       ),
     );

@@ -23,7 +23,7 @@ final class BottomNavigationTabBarWidget extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: ColorExtension.grey_shadow,
+            color: ColorExtension.greyShadow,
             blurRadius: 40,
             offset: const Offset(0, -10),
           ),
@@ -42,20 +42,20 @@ final class BottomNavigationTabBarWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _NavItem(
-                icon: tabProvider.selectedIndex == 0 ? ImagePathEnum.SELECTED_HOME : ImagePathEnum.HOME,
+                icon: tabProvider.selectedIndex == 0 ? ImagePathEnum.selectedHome : ImagePathEnum.home,
                 index: 0,
               ),
               _NavItem(
-                icon: tabProvider.selectedIndex == 1 ? ImagePathEnum.SELECTED_SEARCH : ImagePathEnum.SEARCH,
+                icon: tabProvider.selectedIndex == 1 ? ImagePathEnum.selectedSearch : ImagePathEnum.search,
                 index: 1,
               ),
               const SizedBox(width: 48),
               _NavItem(
-                icon: ImagePathEnum.ALERT,
+                icon: ImagePathEnum.alert,
                 index: 2,
               ),
               _NavItem(
-                icon: ImagePathEnum.PROFILE,
+                icon: ImagePathEnum.profile,
                 index: 3,
               ),
             ],

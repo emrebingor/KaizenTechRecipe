@@ -39,7 +39,7 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
             title: Text(
               'Arama',
               style: TextStyle(
-                color: ColorExtension.neutral_dark,
+                color: ColorExtension.neutralDark,
                 fontFamily: FontFamilyEnum.sofiaPro.value,
                 fontWeight: FontWeight.w700,
                 fontSize: 24,

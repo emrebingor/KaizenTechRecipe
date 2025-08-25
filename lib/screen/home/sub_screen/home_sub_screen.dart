@@ -10,14 +10,14 @@ final class _HeaderFieldWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            SvgPicture.asset(ImagePathEnum.SUN.getImagePath),
+            SvgPicture.asset(ImagePathEnum.sun.getImagePath),
 
             SizedBox(width: 4),
 
             Text(
               'Günaydın',
               style: TextStyle(
-                color: ColorExtension.neutral_dark,
+                color: ColorExtension.neutralDark,
                 fontFamily: FontFamilyEnum.sofiaPro.value,
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
@@ -29,7 +29,7 @@ final class _HeaderFieldWidget extends StatelessWidget {
         Text(
           'Zeynep Yılmaz',
           style: TextStyle(
-            color: ColorExtension.neutral_dark,
+            color: ColorExtension.neutralDark,
             fontFamily: FontFamilyEnum.sofiaPro.value,
             fontWeight: FontWeight.w700,
             fontSize: 24,
@@ -101,7 +101,7 @@ final class _RecipeFieldWidget extends StatelessWidget {
             Icon(
               Icons.restaurant_menu,
               size: 64,
-              color: ColorExtension.brand_primary,
+              color: ColorExtension.brandPrimary,
             ),
 
             const SizedBox(height: 16),
@@ -112,7 +112,7 @@ final class _RecipeFieldWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontFamily: FontFamilyEnum.sofiaPro.value,
-                color: ColorExtension.brand_primary,
+                color: ColorExtension.brandPrimary,
               ),
             ),
           ],

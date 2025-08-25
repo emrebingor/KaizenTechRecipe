@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaizen_tech_recipe/core/bloc_providers.dart';
 import 'package:kaizen_tech_recipe/core/navigation/app_router.dart';
 import 'package:kaizen_tech_recipe/data/provider/recipe_provider.dart';
 import 'package:kaizen_tech_recipe/data/provider/tab_provider.dart';
@@ -15,9 +13,8 @@ final class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
-        ...appBlocProviders,
         ChangeNotifierProvider(create: (_) => TabProvider()),
         ChangeNotifierProvider(create: (_) => RecipeProvider()),
       ],

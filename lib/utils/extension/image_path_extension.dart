@@ -9,64 +9,64 @@ extension ImagePathEnumExtension on ImagePathEnum {
     String _imagePath = '';
 
     switch (this) {
-      case ImagePathEnum.HOME:
+      case ImagePathEnum.home:
         _imagePath = _baseImagePath + _svgPath + 'ic_bottom_bar_home'.toSvg;
         break;
-      case ImagePathEnum.SEARCH:
+      case ImagePathEnum.search:
         _imagePath = _baseImagePath + _svgPath + 'ic_bottom_bar_search'.toSvg;
         break;
-      case ImagePathEnum.ALERT:
+      case ImagePathEnum.alert:
         _imagePath = _baseImagePath + _svgPath + 'ic_bottom_bar_alert'.toSvg;
         break;
-      case ImagePathEnum.PROFILE:
+      case ImagePathEnum.profile:
         _imagePath = _baseImagePath + _svgPath + 'ic_bottom_bar_profile'.toSvg;
         break;
-      case ImagePathEnum.SELECTED_HOME:
+      case ImagePathEnum.selectedHome:
         _imagePath = _baseImagePath + _svgPath + 'ic_selected_bottom_home'.toSvg;
         break;
-      case ImagePathEnum.SELECTED_SEARCH:
+      case ImagePathEnum.selectedSearch:
         _imagePath = _baseImagePath + _svgPath + 'ic_selected_bottom_search'.toSvg;
         break;
-      case ImagePathEnum.CHEF:
+      case ImagePathEnum.chef:
         _imagePath = _baseImagePath + _svgPath + 'ic_chef'.toSvg;
         break;
-      case ImagePathEnum.SUN:
+      case ImagePathEnum.sun:
         _imagePath = _baseImagePath + _svgPath + 'ic_sun'.toSvg;
         break;
-      case ImagePathEnum.CALORIES:
+      case ImagePathEnum.calories:
         _imagePath = _baseImagePath + _svgPath + 'ic_calories'.toSvg;
         break;
-      case ImagePathEnum.TIME:
+      case ImagePathEnum.time:
         _imagePath = _baseImagePath + _svgPath + 'ic_time'.toSvg;
         break;
-      case ImagePathEnum.BACK_ARROW:
+      case ImagePathEnum.backArrowIcon:
         _imagePath = _baseImagePath + _svgPath + 'ic_back_arrow'.toSvg;
         break;
-      case ImagePathEnum.TEXT_FIELD_SEARCH:
+      case ImagePathEnum.textFieldSearch:
         _imagePath = _baseImagePath + _svgPath + 'ic_text_field_search'.toSvg;
         break;
-      case ImagePathEnum.ARROW_RIGHT:
+      case ImagePathEnum.arrowRight:
         _imagePath = _baseImagePath + _svgPath + 'ic_arrow_right'.toSvg;
         break;
-      case ImagePathEnum.HEART:
+      case ImagePathEnum.heart:
         _imagePath = _baseImagePath + _svgPath + 'ic_heart'.toSvg;
         break;
       case ImagePathEnum.X:
         _imagePath = _baseImagePath + _svgPath + 'ic_x_mark'.toSvg;
         break;
-      case ImagePathEnum.CAL:
+      case ImagePathEnum.cal:
         _imagePath = _baseImagePath + _svgPath + 'ic_cal'.toSvg;
         break;
-      case ImagePathEnum.CARB:
+      case ImagePathEnum.carb:
         _imagePath = _baseImagePath + _svgPath + 'ic_carb'.toSvg;
         break;
-      case ImagePathEnum.FAT:
+      case ImagePathEnum.fat:
         _imagePath = _baseImagePath + _svgPath + 'ic_fat'.toSvg;
         break;
-      case ImagePathEnum.PROTEIN:
+      case ImagePathEnum.protein:
         _imagePath = _baseImagePath + _svgPath + 'ic_protein'.toSvg;
         break;
-      case ImagePathEnum.ONBOARDING:
+      case ImagePathEnum.onboarding:
         _imagePath = _baseImagePath + _pngPath + 'onboarding_image'.toPng;
         break;
     }
