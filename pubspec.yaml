@@ -75,15 +75,15 @@ flutter:
   fonts:
     - family: SofiaPro
       fonts:
-        - asset: fonts/SofiaPro-Regular-Az.otf
+        - asset: assets/fonts/SofiaPro-Regular-Az.otf
           weight: 400
-        - asset: fonts/SofiaPro-Bold-Az.otf
+        - asset: assets/fonts/SofiaPro-Bold-Az.otf
           weight: 700
-        - asset: fonts/SofiaPro-Light-Az.otf
+        - asset: assets/fonts/SofiaPro-Light-Az.otf
           weight: 300
-        - asset: fonts/SofiaPro-SemiBold-Az.otf
+        - asset: assets/fonts/SofiaPro-SemiBold-Az.otf
           weight: 600
-        - asset: fonts/SofiaPro-Medium-Az.otf
+        - asset: assets/fonts/SofiaPro-Medium-Az.otf
           weight: 500
 
   # To add assets to your application, add an assets section, like this:
