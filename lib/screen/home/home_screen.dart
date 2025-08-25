@@ -9,7 +9,6 @@ import 'package:kaizen_tech_recipe/core/base/view/base_view.dart';
 import 'package:kaizen_tech_recipe/data/bloc/home/home_bloc.dart';
 import 'package:kaizen_tech_recipe/data/bloc/home/home_event.dart';
 import 'package:kaizen_tech_recipe/data/bloc/home/home_state.dart';
-import 'package:kaizen_tech_recipe/data/provider/recipe_provider.dart';
 import 'package:kaizen_tech_recipe/enum/font_family_enum.dart';
 import 'package:kaizen_tech_recipe/enum/image_path_enum.dart';
 import 'package:kaizen_tech_recipe/models/get_category_response_model.dart';
@@ -48,20 +47,16 @@ final class _HomeScreenState extends BaseViewState<HomeScreen> with HomeScreenMi
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _HeaderFieldWidget(),
-
                         SizedBox(height: 24),
-
                         _CategoryFieldWidget(
                           categories: state.categories ?? [],
                           onTap: selectedCategoryUpdate,
                           selectedCategory: state.selectedCategory,
                         ),
-
                         SizedBox(height: 24),
-
                         _RecipeFieldWidget(
                           recipes: state.filteredRecipe ?? [],
-                            onTap: (id) => itemDetailNavigation(id),
+                          onTap: (id) => itemDetailNavigation(id),
                         ),
                       ],
                     ),

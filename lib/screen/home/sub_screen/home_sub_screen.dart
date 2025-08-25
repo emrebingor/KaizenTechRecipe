@@ -11,9 +11,7 @@ final class _HeaderFieldWidget extends StatelessWidget {
         Row(
           children: [
             SvgPicture.asset(ImagePathEnum.sun.getImagePath),
-
             SizedBox(width: 4),
-
             Text(
               'Günaydın',
               style: TextStyle(
@@ -25,7 +23,6 @@ final class _HeaderFieldWidget extends StatelessWidget {
             ),
           ],
         ),
-
         Text(
           'Zeynep Yılmaz',
           style: TextStyle(
@@ -57,9 +54,7 @@ final class _CategoryFieldWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TitleTextWidget(title: 'Kategoriler'),
-
         SizedBox(height: 12),
-
         SizedBox(
           height: 41,
           child: ListView.separated(
@@ -103,9 +98,7 @@ final class _RecipeFieldWidget extends StatelessWidget {
               size: 64,
               color: ColorExtension.brandPrimary,
             ),
-
             const SizedBox(height: 16),
-
             Text(
               'Kategoriye ait ürün şu an güncel ürün yoktur.',
               textAlign: TextAlign.center,
@@ -124,7 +117,6 @@ final class _RecipeFieldWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TitleTextWidget(title: 'Tarifler'),
-
         SizedBox(
           height: 270,
           child: ListView.separated(

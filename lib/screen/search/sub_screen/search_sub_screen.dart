@@ -59,9 +59,7 @@ final class _EmptyRecipeWidget extends StatelessWidget {
             size: 64,
             color: ColorExtension.brandPrimary,
           ),
-
           const SizedBox(height: 16),
-
           Text(
             'Kategoriye ait ürün şu an güncel ürün yoktur.',
             textAlign: TextAlign.center,

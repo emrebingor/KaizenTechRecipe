@@ -34,14 +34,12 @@ class _ItemDetailScreenState extends BaseViewState<ItemDetailScreen> with ItemDe
   Widget build(BuildContext context) {
     return BaseView<ItemDetailBloc, ItemDetailAction, ItemDetailState>(
       blocModel: itemDetailBloc,
-      child: BlocConsumer<ItemDetailBloc, ItemDetailState>(
-        listener: (BuildContext context, ItemDetailState state) {},
+      child: BlocBuilder<ItemDetailBloc, ItemDetailState>(
         builder: (BuildContext context, ItemDetailState state) {
           return Scaffold(
             body: Stack(
               children: [
                 _ImageWidget(image: state.recipe?.image ?? ''),
-
                 _ToolBarWidget(),
               ],
             ),
@@ -58,7 +56,6 @@ class _ItemDetailScreenState extends BaseViewState<ItemDetailScreen> with ItemDe
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         child: Column(
@@ -67,24 +64,18 @@ class _ItemDetailScreenState extends BaseViewState<ItemDetailScreen> with ItemDe
                               title: state.recipe?.name ?? '',
                               min: state.recipe?.cookTime ?? 0,
                             ),
-
                             SizedBox(height: 6),
-
                             _InformationTextWidget(
                               description: state.recipe?.description ?? '',
                             ),
-
                             SizedBox(height: 16),
-
                             _StatColumnWidget(
                               fat: state.recipe?.nutrition.fat ?? 0,
                               protein: state.recipe?.nutrition.protein ?? 0,
                               cal: state.recipe?.nutrition.calories?? 0,
                               carb: state.recipe?.nutrition.carbohydrates ?? 0,
                             ),
-
                             SizedBox(height: 24),
-
                             _TabBarWidget(
                               selectedTab: state.selectedTab,
                               onTabChanged: (TabType tab) {
@@ -94,13 +85,10 @@ class _ItemDetailScreenState extends BaseViewState<ItemDetailScreen> with ItemDe
                           ],
                         ),
                       ),
-
-
                       state.recipe == null ? SizedBox.shrink() : _IngredientInstructionFieldWidget(
                         selectedTab: state.selectedTab,
                         recipe: state.recipe!,
                       ),
-
                     ],
                   ),
                 ),

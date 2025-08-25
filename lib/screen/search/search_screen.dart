@@ -57,13 +57,9 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
                       children: [
                         _TextFieldWidget(
                           controller: searchController,
-                          onChanged: (value) {
-                            searchFieldUpdate(value);
-                          },
+                          onChanged: searchFieldUpdate,
                         ),
-
                         SizedBox(height: 16),
-
                         _CategoryFieldWidget(
                           selectedCategory: state.selectedCategory,
                           onTap: (GetCategoryResponseModel category) => selectedCategoryUpdate(
@@ -71,9 +67,7 @@ final class _SearchScreenState extends BaseViewState<SearchScreen> with SearchSc
                             context.read<RecipeProvider>().recipes,
                           ),
                         ),
-
                         SizedBox(height: 24),
-
                         state.filteredRecipe?.isEmpty ?? false
                             ? _EmptyRecipeWidget()
                             : _RecipeListWidget(

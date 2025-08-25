@@ -43,7 +43,7 @@ final class _IngredientInstructionFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      padding: const EdgeInsets.all(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -55,7 +55,6 @@ final class _IngredientInstructionFieldWidget extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-
           Text(
             selectedTab == TabType.instructions ? '${recipe.instructions.length} Adım' : '${recipe.ingredients.length} Malzeme',
             style: TextStyle(
@@ -64,9 +63,7 @@ final class _IngredientInstructionFieldWidget extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-
           SizedBox(height: 12),
-
           ListView.separated(
             shrinkWrap: true,
             itemCount: selectedTab == TabType.instructions
@@ -116,8 +113,6 @@ final class _IngredientInstructionFieldWidget extends StatelessWidget {
               }
             },
           ),
-
-
         ],
       ),
     );
@@ -190,7 +185,6 @@ final class _ItemInformationRowWidget extends StatelessWidget {
           ),
         ),
         Spacer(),
-
         Text(
           '$min Dk',
           style: TextStyle(
@@ -215,7 +209,6 @@ final class _InformationTextWidget extends StatelessWidget {
       text: TextSpan(
         style: const TextStyle(color: Colors.black, fontSize: 16),
         children: [
-
           TextSpan(
             text: description,
             style: TextStyle(
@@ -225,7 +218,6 @@ final class _InformationTextWidget extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-
           TextSpan(
             text: ' Daha fazla gör',
             style: TextStyle(
@@ -262,9 +254,7 @@ final class _StatColumnWidget extends StatelessWidget {
             Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.protein, title: '${protein}g Protein')),
           ],
         ),
-
         SizedBox(height: 16),
-
         Row(
           children: [
             Expanded(child: IngredientBoxWidget(icon: ImagePathEnum.cal, title: '${cal} Kcal')),
